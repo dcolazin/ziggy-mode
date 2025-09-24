@@ -1,10 +1,10 @@
-;;; ziggy-mode.el --- major mode for Ziggy, a data serialization language -*- lexical-binding: t; -*-
+;;; ziggy-mode.el --- Major mode for Ziggy, a data serialization language -*- lexical-binding: t; -*-
 
 ;; Author: 2024 Robbie Lyman <rb.lymn@gmail.com>
 ;;
 ;; URL: https://github.com/robbielyman/ziggy-mode
 ;; Version: 0.0.1
-;; Package-Requires: ((emacs "29.0"))
+;; Package-Requires: ((emacs "29.1"))
 ;;
 ;; This file is NOT part of Emacs.
 ;;
@@ -141,8 +141,7 @@
 
    :feature 'top-comment
    :language 'ziggy
-   '((top_comment) @font-lock-comment-face)
-   )
+   '((top_comment) @font-lock-comment-face))
   "Tree-sitter font-lock settings.")
 
 (defvar ziggy-schema--treesit-font-lock-setting
@@ -207,8 +206,7 @@
       "]"
       "{"
       "}"
-      ] @font-lock-bracket-face)
-   )
+      ] @font-lock-bracket-face))
   "Tree-sitter font-lock settings.")
 
 ;;;###autoload
