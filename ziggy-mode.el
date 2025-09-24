@@ -3,7 +3,7 @@
 ;; Author: 2024 Robbie Lyman <rb.lymn@gmail.com>
 ;;
 ;; URL: https://github.com/robbielyman/ziggy-mode
-;; Version: 0.0.1
+;; Version: 0.0.2
 ;; Package-Requires: ((emacs "29.1"))
 ;;
 ;; This file is NOT part of Emacs.
@@ -36,8 +36,8 @@
 (require 'treesit)
 (require 'reformatter)
 
-(defgroup ziggy-mode nil
-  "Tree-sitter-powered support for the Ziggy data serialization languae."
+(defgroup ziggy nil
+  "Tree-sitter-powered support for the Ziggy data serialization language."
   :link '(url-link "https://ziggy-lang.io")
   :group 'languages)
 
@@ -45,26 +45,26 @@
   "Format buffers before saving using ziggy fmt."
   :type 'boolean
   :safe #'booleanp
-  :group 'ziggy-mode)
+  :group 'ziggy)
 
 (defcustom ziggy-format-show-buffer t
   "Show a *ziggy-fmt* buffer after ziggy fmt completes with errors."
   :type 'boolean
   :safe #'booleanp
-  :group 'ziggy-mode)
+  :group 'ziggy)
 
 (defcustom ziggy-bin "ziggy"
   "Path to ziggy executable."
   :type 'file
   :safe #'stringp
-  :group 'ziggy-mode)
+  :group 'ziggy)
 
 ;; ziggy fmt
 
 (reformatter-define ziggy-format
   :program ziggy-bin
   :args '("fmt" "--stdin")
-  :group 'ziggy-mode
+  :group 'ziggy
   :lighter " ZiggyFmt")
 
 ;;;###autoload (autoload 'ziggy-format-buffer "current-file" nil t)
@@ -212,7 +212,7 @@
 ;;;###autoload
 (define-derived-mode ziggy-mode prog-mode "Ziggy"
   "A tree-sitter-powered major mode for the Ziggy data serialization language."
-  :group 'ziggy-mode
+  :group 'ziggy
   (when ziggy-format-on-save
     (ziggy-format-on-save-mode 1))
   (when (treesit-ready-p 'ziggy)
@@ -228,7 +228,7 @@
 ;;;###autoload
 (define-derived-mode ziggy-schema-mode prog-mode "Ziggy-Schema"
   "A tree-sitter-powered major mode for Ziggy schema."
-  :group 'ziggy-mode
+  :group 'ziggy
   (when ziggy-format-on-save
     (ziggy-format-on-save-mode 1))
   (when (treesit-ready-p 'ziggy-schema)
@@ -248,5 +248,4 @@
 (add-to-list 'auto-mode-alist '("\\.\\(ziggy-schema\\|zgy-schema\\)\\'" . ziggy-schema-mode))
 
 (provide 'ziggy-mode)
-(provide 'ziggy-schema-mode)
 ;;; ziggy-mode.el ends here
