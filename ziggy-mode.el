@@ -4,7 +4,7 @@
 ;;
 ;; URL: https://github.com/robbielyman/ziggy-mode
 ;; Version: 0.0.2
-;; Package-Requires: ((emacs "29.1"))
+;; Package-Requires: ((emacs "29.1") (reformatter "0.6"))
 ;;
 ;; This file is NOT part of Emacs.
 ;;
